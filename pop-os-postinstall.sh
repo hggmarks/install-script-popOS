@@ -199,6 +199,18 @@ install_neovim(){
     rm -rf ./neovim
 }
 
+install_brave(){
+    sudo apt install apt-transport-https curl
+
+    sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+
+    echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+
+    sudo apt update
+
+    sudo apt install brave-browser
+}
+
 #Cria pastas para produtividade no nautilus
 extra_config(){
 
@@ -241,6 +253,8 @@ install_flatpaks
 ##extra_config
 apt_update
 system_clean
+install_nvm_node
+install_brave
 install_neovim
 
 ## finalização
